@@ -43,6 +43,7 @@
   text-overflow: ellipsis;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  opacity: 0.7;
 }
 
 .profile__edit-btn {
@@ -69,10 +70,12 @@
   line-height: 1;
   background-color: #212121;
   color: #fff;
-  max-width: 149px;
+  max-width: 157px;
   height: 52px;
   border-radius: 8px;
   margin-top: 138px;
+  border: none;
+  padding: 18px 32px;
 }
 
 .profile__add-btn:hover {
@@ -115,5 +118,6 @@
   .profile__add-btn {
     margin: 0;
     width: 100%;
+    max-width: 100%;
   }
 }
