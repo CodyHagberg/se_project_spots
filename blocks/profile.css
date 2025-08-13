@@ -55,6 +55,7 @@
   background-color: transparent;
   border: none;
   opacity: 70%;
+  padding: 0;
 }
 
 .profile__edit-btn:hover {
