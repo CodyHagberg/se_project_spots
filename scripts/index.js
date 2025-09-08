@@ -52,10 +52,8 @@ editProfileForm.addEventListener("submit", handleEditProfileSubmit);
 
 function handleNewPostSubmit(evt) {
   evt.preventDefault();
-  newPostCardImageEl.textContent = newPostCardImageInput.value;
-  console.log("Image");
-  newPostCardTitleEl.textContent = newPostCardDescriptionInput.value;
-  console.log("description");
+  console.log(newPostCardImageInput.value);
+  console.log(newPostCardDescriptionInput.value);
   newPostModal.classList.remove("modal_is-opened");
 }
 
