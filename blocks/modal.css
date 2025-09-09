@@ -66,6 +66,7 @@
 }
 
 .modal__input {
+  box-sizing: border-box;
   display: block;
   margin: 8px 0 0;
   max-width: 630px;
