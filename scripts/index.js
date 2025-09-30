@@ -56,6 +56,11 @@ const profileDescriptionEl = document.querySelector(".profile__description");
 const newPostCardTitleEl = document.querySelector(".card__title");
 const newPostCardImageEl = document.querySelector(".card__image");
 
+const previewPostModal = document.querySelector("#preview-post-modal");
+const previewPostCloseBtn = previewPostModal.querySelector(".modal__close-btn_type_preview");
+const previewPostImageEl = previewPostModal.querySelector(".modal__image");
+const previewPostCaptionEl = previewPostModal.querySelector(".modal__caption");
+
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
 
@@ -78,6 +83,17 @@ function getCardElement(data) {
   const cardDeleteBtnEl = cardElement.querySelector(".card__delete-btn");
   cardDeleteBtnEl.addEventListener("click", () => {
    cardElement.remove();
+  });
+
+  cardImageEl.addEventListener("click", () => {
+    previewPostImageEl.src = data.link;
+    previewPostImageEl.alt = data.name;
+    previewPostCaptionEl.textContent = data.name;
+    openModal(previewPostModal);
+  });
+
+  previewPostCloseBtn.addEventListener("click", () => {
+    closeModal(previewPostModal);
   });
 
   return cardElement;
