@@ -1,3 +1,9 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
 .card__title {
   font-weight: 500;
   font-size: 20px;
@@ -28,6 +34,26 @@
   overflow: hidden;
 }
 
+.card__delete-btn {
+  background-image: url(../images/Delete_def.svg);
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-color: transparent;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top:10px;
+  right:10px;
+}
+
+.card__delete-btn:hover{
+  cursor: pointer;
+  background-image: url(../images/Delete_hov.svg);
+}
+
+
 .card__like-btn {
   background-image: url(../images/Union.svg);
   width: 23px;
@@ -53,6 +79,7 @@ opacity: 1;
 .card__like-btn_active:hover{
   opacity: 0.5;
 }
+
 
 
 @media screen and (max-width: 627px) {
