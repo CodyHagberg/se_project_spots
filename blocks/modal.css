@@ -107,6 +107,12 @@
   line-height: 1;
 }
 
+.modal__error{
+  color: red;
+  display: block;
+  margin-top: 8px;
+}
+
 .modal__submit-btn {
   max-width: 156px;
   background-color: #212121;
