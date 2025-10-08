@@ -83,6 +83,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 1.1;
+  display: block;
 }
 
 .modal__input {
@@ -107,7 +108,7 @@
   line-height: 1;
 }
 
-.modal__error{
+.modal__error {
   color: red;
   display: block;
   margin-top: 8px;

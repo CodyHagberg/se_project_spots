@@ -4,9 +4,18 @@ const showInputError = (formEl, inputEl, errorMessage) => {
  errorMessageEl.textContent = errorMessage;
 }
 
+const hideInputError = (formEl, inputEl) => {
+  const errorMessageID = inputEl.id + "-error";
+  const errorMessageEl = document.querySelector ("#" + errorMessageID);
+  errorMessageEl.textContent = "";
+}
+
 const checkInputValidity = (formEl, inputEl) => {
   if (!inputEl.validity.valid) {
     showInputError(formEl, inputEl, inputEl.validationMessage);
+  }
+  else {
+    hideInputError(formEl, inputEl);
   }
 };
 
