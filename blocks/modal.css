@@ -97,6 +97,7 @@
   border-color: #21212166;
 }
 
+
 .modal__input:hover {
   cursor: pointer;
 }
@@ -107,6 +108,11 @@
   font-size: 20px;
   line-height: 1;
 }
+
+.modal__input_type_error {
+  border: 1px solid rgba(255, 0, 0, 0.6);
+}
+
 
 .modal__error {
   color: red;
