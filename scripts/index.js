@@ -84,7 +84,7 @@ function getCardElement(data) {
    cardElement.remove();
   });
 
-  // Open preview modal on image click. Double check this part.
+
   cardImageEl.addEventListener("click", () => {
     previewPostImageEl.src = data.link;
     previewPostImageEl.alt = data.name;

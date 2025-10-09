@@ -29,13 +29,18 @@ const hasInvalidInput = (inputList) => {
 
 const toggleButtonState = (inputList, buttonEl) => {
   if (hasInvalidInput(inputList)) {
-    buttonEl.disabled = true;
+    disableButtonState(buttonEl);
     buttonEl.classList.add("modal__submit-btn_disabled");
   } else {
     buttonEl.disabled = false;
     buttonEl.classList.remove("modal__submit-btn_disabled");
   }
 };
+
+const disableButtonState = (buttonEl) => {
+  buttonEl.disabled = true;
+  buttonEl.classList.add("modal__submit-btn_disabled");
+}
 
 
 const setEventListeners = (formEl) => {
