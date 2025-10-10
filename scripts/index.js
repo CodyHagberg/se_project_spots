@@ -146,7 +146,7 @@ function handleNewPostSubmit(evt) {
 
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
-  disableButtonState(newPostSubmitBtn);
+  disableButtonState(newPostSubmitBtn, settings);
   newPostForm.reset();
   closeModal(newPostModal);
 }
