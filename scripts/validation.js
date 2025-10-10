@@ -7,9 +7,9 @@ const settings = {
   errorClass: "modal__input-error_active",
 };
 
-const showInputError = (formEl, inputEl, errorMessage,config) => {
+const showInputError = (formEl, inputEl, errorMessage, config) => {
  const errorMessageID = inputEl.id + "-error";
- const errorMessageEl = document.querySelector ("#" + errorMessageID);
+ const errorMessageEl = document.querySelector("#" + errorMessageID);
  errorMessageEl.textContent = errorMessage;
  inputEl.classList.add(config.inputErrorClass);
 }
@@ -21,12 +21,12 @@ const hideInputError = (formEl, inputEl, config) => {
   inputEl.classList.remove(config.inputErrorClass);
 }
 
-const checkInputValidity = (formEl, inputEl) => {
+const checkInputValidity = (formEl, inputEl, config) => {
   if (!inputEl.validity.valid) {
-    showInputError(formEl, inputEl, inputEl.validationMessage);
+    showInputError(formEl, inputEl, inputEl.validationMessage, config);
   }
   else {
-    hideInputError(formEl, inputEl);
+    hideInputError(formEl, inputEl, config);
   }
 };
 
@@ -38,8 +38,7 @@ const hasInvalidInput = (inputList) => {
 
 const toggleButtonState = (inputList, buttonEl, config) => {
   if (hasInvalidInput(inputList)) {
-    disableButtonState(buttonEl);
-    buttonEl.classList.add(config.inactiveButtonClass);
+    disableButtonState(buttonEl, config);
   } else {
     buttonEl.disabled = false;
     buttonEl.classList.remove(config.inactiveButtonClass);
@@ -53,7 +52,7 @@ const disableButtonState = (buttonEl, config) => {
 
 
 
-const setEventListeners = (config) => {
+const setEventListeners = (formEl, config) => {
   const inputList = Array.from(formEl.querySelectorAll(config.inputSelector));
   const submitButton = formEl.querySelector(config.submitButtonSelector);
 
@@ -69,9 +68,9 @@ const setEventListeners = (config) => {
 
 
 const enableValidation = (config) => {
-  const formList = document.querySelectorAll(config.formSelector);
+  const formList =Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formEl) => {
-    setEventListeners(formEl);
+    setEventListeners(formEl, config);
 });
 };
 enableValidation(settings);

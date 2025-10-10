@@ -49,7 +49,7 @@
   right:10px;
 }
 
-.card__delete-btn:hover{
+.card__delete-btn:hover {
   cursor: pointer;
   background-image: url(../images/Delete_hov.svg);
 }

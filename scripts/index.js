@@ -76,7 +76,7 @@ function getCardElement(data) {
   cardTitleEl.textContent = data.name;
 
    const cardLikeBtnEl = cardElement.querySelector(".card__like-btn");
-  cardLikeBtnEl.addEventListener("click",() => {
+  cardLikeBtnEl.addEventListener("click", () => {
     cardLikeBtnEl.classList.toggle("card__like-btn_active")
   });
 
@@ -104,9 +104,33 @@ previewPostCloseBtn.addEventListener("click", () => {
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
+  function escapeClose(evt) {
+    if (evt.key === "Escape") {
+      closeModal(modal);
+
+    }
 }
+  function overlayClose(evt) {
+    if (evt.target.classList.contains("modal_is-opened")) {
+      closeModal(modal);
+
+    }
+  }
+
+  modal._escapeClose = escapeClose;
+  modal._overlayClose = overlayClose;
+
+  document.addEventListener("keydown", escapeClose);
+  modal.addEventListener("mousedown", overlayClose);
+}
+
+
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
+  document.removeEventListener("keydown", modal._escapeClose);
+  modal.removeEventListener("mousedown", modal._overlayClose);
+  delete modal._escapeClose;
+  delete modal._overlayClose;
 }
 
 editProfileBtn.addEventListener("click", function () {
