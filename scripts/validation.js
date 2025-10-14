@@ -7,6 +7,7 @@ const settings = {
   errorClass: "modal__input-error_active",
 };
 
+// git testing
 const showInputError = (formEl, inputEl, errorMessage, config) => {
  const errorMessageID = inputEl.id + "-error";
  const errorMessageEl = document.querySelector("#" + errorMessageID);
