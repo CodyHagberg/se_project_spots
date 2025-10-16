@@ -14,14 +14,14 @@ const showInputError = (formEl, inputEl, errorMessage, config) => {
  errorMessageEl.textContent = errorMessage;
  inputEl.classList.add(config.inputErrorClass);
 }
-
+//hide input error
 const hideInputError = (formEl, inputEl, config) => {
   const errorMessageID = inputEl.id + "-error";
   const errorMessageEl = document.querySelector ("#" + errorMessageID);
   errorMessageEl.textContent = "";
   inputEl.classList.remove(config.inputErrorClass);
 }
-
+//check input validity
 const checkInputValidity = (formEl, inputEl, config) => {
   if (!inputEl.validity.valid) {
     showInputError(formEl, inputEl, inputEl.validationMessage, config);
@@ -36,7 +36,7 @@ const hasInvalidInput = (inputList) => {
     return !input.validity.valid;
   });
 };
-
+//toggle button state
 const toggleButtonState = (inputList, buttonEl, config) => {
   if (hasInvalidInput(inputList)) {
     disableButtonState(buttonEl, config);
@@ -64,7 +64,7 @@ const setEventListeners = (formEl, config) => {
   const submitButton = formEl.querySelector(config.submitButtonSelector);
 
  toggleButtonState(inputList, submitButton, config);
-
+// for each input, add event listener to check validity
   inputList.forEach((inputEl) => {
     inputEl.addEventListener("input", () => {
       checkInputValidity(formEl, inputEl, config);
