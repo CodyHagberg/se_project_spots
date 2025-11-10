@@ -1,3 +1,24 @@
+import "./index.css";
+import { enableValidation, settings, resetValidation } from "../scripts/validation.js";
+
+
+import Logo from '../images/Logo.svg';
+import Avatar from '../images/avatar.jpg';
+import PencilIcon from '../images/Group2.svg';
+import PlusIcon from '../images/Group26.svg';
+import CloseIcon from '../images/close_icon.png';
+import CloseWhite from '../images/close_btn_white.svg';
+
+
+document.querySelector('.header__logo').src = Logo;
+document.querySelector('.profile__avatar').src = Avatar;
+document.querySelector('.profile__edit-icon').src = PencilIcon;
+document.querySelector('.profile__add-icon').src = PlusIcon;
+
+
+document.querySelectorAll('.modal__close-icon')[0].src = CloseIcon;
+document.querySelectorAll('.modal__close-icon-white')[0].src = CloseWhite;
+
 const initialCards = [
 
   {
@@ -182,3 +203,5 @@ initialCards.forEach(function (item) {
   const cardElement = getCardElement(item);
   cardsList.append(cardElement);
 });
+
+enableValidation(settings);
