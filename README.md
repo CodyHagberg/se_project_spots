@@ -15,6 +15,7 @@ This project is made so all the elements are displayed correctly on popular scre
 - HTML
 - CSS
 - Responsive Design
+-Webpacks
 
 ### Deployment
 
@@ -27,10 +28,7 @@ This project is made so all the elements are displayed correctly on popular scre
 
 -[link]https://drive.google.com/file/d/1XtgWY_TiIXkT8L8L1qxA_hUTLI9vYCoF/view?usp=sharing
 
--small error occured in my video capture where it wasn't capturing my full screen. Majority of what I show is visibile. However when going over fonts it was off screen. To see how font files were connected, first open up the vendor folder and then open the fonts folder. This is where you will see the two downloaded files from google. These are then connected to the fonts.css file.
+-small error occured in my video capture where it wasn't capturing my full screen. Majority of what I show is visibile. However when going over fonts it was off screen. To see how font files were connected, first open up the vendor folder and then open the fonts folder. This is where you will see the two downloaded files from google. These are then connected to the fonts.css file. Added a webpack to stop working off local host. 
 
-**Images**
 
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster.
 
-Good luck and have fun!
