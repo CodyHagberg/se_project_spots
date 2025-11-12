@@ -1,3 +1,4 @@
+// src/pages/index.js
 import "./index.css";
 import { enableValidation, settings, resetValidation } from "../scripts/validation.js";
 
@@ -203,5 +204,5 @@ initialCards.forEach(function (item) {
   const cardElement = getCardElement(item);
   cardsList.append(cardElement);
 });
-
+// Enable form validation
 enableValidation(settings);
