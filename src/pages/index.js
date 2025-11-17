@@ -2,7 +2,7 @@
 import "./index.css";
 import { enableValidation, settings, resetValidation } from "../scripts/validation.js";
 
-import Api from "../scripts/Api.js";
+import Api from "../utils/Api.js";
 import Logo from '../images/Logo.svg';
 import favicon from '../images/favicon.ico';
 import Avatar from '../images/avatar.jpg';
@@ -69,8 +69,8 @@ api.getInitialCards()
   const cardElement = getCardElement(item);
   cardsList.append(cardElement);
 });
-});
-
+})
+.catch(console.error);
 
 
 
