@@ -67,8 +67,11 @@ const api = new Api({
 
 
 api.getAppInfo()
-.then(([data]) => {
-   data.forEach(function (item) {
+.then(([userData, cardsData]) => {
+profileNameEl.textContent = userData.name;
+profileDescriptionEl.textContent = userData.about;
+document.querySelector('.profile__avatar').src = userData.avatar;
+   cardsData.forEach((item) => {
   const cardElement = getCardElement(item);
   cardsList.append(cardElement);
 });
@@ -198,9 +201,16 @@ newPostCloseBtn.addEventListener("click", function () {
 
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
-  profileNameEl.textContent = editProfileNameInput.value;
-  profileDescriptionEl.textContent = editProfileDescriptionInput.value;
-  closeModal(editProfileModal);
+  api.editUserInfo({
+    name: editProfileNameInput.value,
+    about: editProfileDescriptionInput.value
+  })
+  .then((userData) => {
+    profileNameEl.textContent = userData.name;
+    profileDescriptionEl.textContent = userData.about;
+    closeModal(editProfileModal);
+  })
+  .catch(console.error);
 }
 
 editProfileForm.addEventListener("submit", handleEditProfileSubmit);
