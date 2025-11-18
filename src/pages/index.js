@@ -21,6 +21,7 @@ document.querySelector('.profile__add-icon').src = PlusIcon;
 
 document.querySelectorAll('.modal__close-icon')[0].src = CloseIcon;
 document.querySelectorAll('.modal__close-icon-white')[0].src = CloseWhite;
+document.querySelector("link[rel='icon']").href = favicon;
 
 //const initialCards = [
 
@@ -63,16 +64,16 @@ const api = new Api({
   }
 });
 
-api.getInitialCards()
-.then((data) => {
-  data.forEach(function (item) {
+
+
+api.getAppInfo()
+.then(([data]) => {
+   data.forEach(function (item) {
   const cardElement = getCardElement(item);
   cardsList.append(cardElement);
 });
 })
 .catch(console.error);
-
-
 
 const editProfileBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
