@@ -9,7 +9,7 @@ class Api {
   }
 
 
-
+//need to add a method to add cards
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
@@ -52,6 +52,17 @@ class Api {
       body: JSON.stringify({
         avatar,
       }),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    });
+  }
+  deleteCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: this._headers,
     }).then((res) => {
       if (res.ok) {
         return res.json();

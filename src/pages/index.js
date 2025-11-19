@@ -90,10 +90,26 @@ const previewPostCaptionEl = previewPostModal.querySelector(".modal__caption");
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
 const deleteModal = document.querySelector("#delete-modal");
+const deleteForm = deleteModal.querySelector(".modal__form");
 
-function handleDeleteCard(cardElement) {
+let selectedCard;
+let selectedCardId;
+
+function handleDeleteCard(cardElement, cardId) {
   deleteModal.cardElement = cardElement
+  selectedCardId = cardId;
+  selectedCard = cardElement;
   openModal(deleteModal);
+}
+
+function handleDeleteSubmit(evt) {
+  evt.preventDefault();
+  api.deleteCard(selectedCardId)
+  .then(() => {
+    selectedCard.remove();
+    closeModal(deleteModal);
+  })
+  .catch(console.error);
 }
 
 function getCardElement(data) {
@@ -113,8 +129,8 @@ function getCardElement(data) {
   });
 
   const cardDeleteBtnEl = cardElement.querySelector(".card__delete-btn");
-  cardDeleteBtnEl.addEventListener("click", () => {
-    handleDeleteCard(cardElement);
+  cardDeleteBtnEl.addEventListener("click", (evt) => {
+    handleDeleteCard(cardElement, data._id);
   });
 
 
@@ -208,6 +224,8 @@ function handleAvatarFormSubmit(evt) {
 }
 
 avatarForm.addEventListener("submit", handleAvatarFormSubmit);
+
+deleteForm.addEventListener("submit", handleDeleteSubmit);
 
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
