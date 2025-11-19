@@ -89,6 +89,12 @@ const previewPostCaptionEl = previewPostModal.querySelector(".modal__caption");
 
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
+const deleteModal = document.querySelector("#delete-modal");
+
+function handleDeleteCard(cardElement) {
+  deleteModal.cardElement = cardElement
+  openModal(deleteModal);
+}
 
 function getCardElement(data) {
   const cardElement = cardTemplate.content
@@ -108,7 +114,7 @@ function getCardElement(data) {
 
   const cardDeleteBtnEl = cardElement.querySelector(".card__delete-btn");
   cardDeleteBtnEl.addEventListener("click", () => {
-   cardElement.remove();
+    handleDeleteCard(cardElement);
   });
 
 
@@ -241,3 +247,4 @@ newPostForm.addEventListener("submit", handleNewPostSubmit);
 enableValidation(settings);
 
 //updating Branch testing
+//checking endpoint changes
