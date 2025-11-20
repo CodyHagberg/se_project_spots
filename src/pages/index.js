@@ -1,6 +1,6 @@
 // src/pages/index.js
 import "./index.css";
-import { enableValidation, settings, resetValidation } from "../scripts/validation.js";
+import { enableValidation, settings, resetValidation, disableButtonState } from "../scripts/validation.js";
 
 import Api from "../utils/Api.js";
 import Logo from '../images/Logo.svg';
@@ -112,24 +112,46 @@ function handleDeleteSubmit(evt) {
   .catch(console.error);
 }
 
+function handleLike(evt, cardId) {
+  const likeBtn = evt.target;
+  if (likeBtn.classList.contains("card__like-btn_active")) {
+    api.removeLike(cardId)
+    .then((updatedCard) => {
+      if (updatedCard.isLiked === false) {
+        likeBtn.classList.remove("card__like-btn_active");
+      }
+    })
+    .catch(console.error);
+  } else {
+    api.addLike(cardId)
+    .then((updatedCard) => {
+      if (updatedCard.isLiked === true) {
+        likeBtn.classList.add("card__like-btn_active");
+      }
+    })
+    .catch(console.error);
+  }
+}
+
 function getCardElement(data) {
   const cardElement = cardTemplate.content
     .querySelector(".card")
     .cloneNode(true);
   const cardTitleEl = cardElement.querySelector(".card__title");
   const cardImageEl = cardElement.querySelector(".card__image");
+  const cardLikeBtnEl = cardElement.querySelector(".card__like-btn");
+  const cardDeleteBtnEl = cardElement.querySelector(".card__delete-btn");
 
   cardImageEl.src = data.link;
   cardImageEl.alt = data.name;
   cardTitleEl.textContent = data.name;
 
-   const cardLikeBtnEl = cardElement.querySelector(".card__like-btn");
-  cardLikeBtnEl.addEventListener("click", () => {
-    cardLikeBtnEl.classList.toggle("card__like-btn_active")
-  });
+  if (data.isLiked) {
+    cardLikeBtnEl.classList.add("card__like-btn_active");
+  }
 
-  const cardDeleteBtnEl = cardElement.querySelector(".card__delete-btn");
-  cardDeleteBtnEl.addEventListener("click", (evt) => {
+  cardLikeBtnEl.addEventListener("click", (evt) => handleLike(evt, data._id));
+  cardDeleteBtnEl.addEventListener("click", () => {
     handleDeleteCard(cardElement, data._id);
   });
 
@@ -211,6 +233,7 @@ avatarModalCloseBtn.addEventListener("click", function () {
 
 
 
+
 function handleAvatarFormSubmit(evt) {
   evt.preventDefault();
   api.editUserAvatar({
@@ -252,11 +275,15 @@ function handleNewPostSubmit(evt) {
     link: newPostCardImageInput.value,
   };
 
-  const cardElement = getCardElement(inputValues);
+ api.addCard(inputValues)
+ .then((cardData) => {
+  const cardElement = getCardElement(cardData);
   cardsList.prepend(cardElement);
-  disableButtonState(newPostSubmitBtn, settings);
   newPostForm.reset();
+  disableButtonState(newPostSubmitBtn, settings);
   closeModal(newPostModal);
+})
+ .catch(console.error);
 }
 
 newPostForm.addEventListener("submit", handleNewPostSubmit);
