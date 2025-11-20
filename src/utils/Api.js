@@ -9,7 +9,7 @@ class Api {
   }
 
 
-//need to add a method to add cards
+
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
