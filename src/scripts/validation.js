@@ -46,7 +46,7 @@ const toggleButtonState = (inputList, buttonEl, config) => {
   }
 };
 
-const disableButtonState = (buttonEl, config) => {
+export const disableButtonState = (buttonEl, config) => {
   buttonEl.disabled = true;
   buttonEl.classList.add(config.inactiveButtonClass);
 }
@@ -80,5 +80,5 @@ export const enableValidation = (config) => {
     setEventListeners(formEl, config);
 });
 };
-enableValidation(settings);
+//enableValidation(settings);
 
