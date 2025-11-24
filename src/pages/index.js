@@ -38,15 +38,16 @@ const api = new Api({
 
 
 
-api.getAppInfo()
-.then(([userData, cardsData]) => {
-profileNameEl.textContent = userData.name;
-profileDescriptionEl.textContent = userData.about;
-document.querySelector('.profile__avatar').src = userData.avatar;
-   cardsData.forEach((item) => {
-  const cardElement = getCardElement(item);
-  cardsList.append(cardElement);
-});
+api
+  .getAppInfo()
+  .then(([userData, cardsData]) => {
+  profileNameEl.textContent = userData.name;
+  profileDescriptionEl.textContent = userData.about;
+  profileAvatar.src = userData.avatar;
+  cardsData.forEach((item) => {
+    const cardElement = getCardElement(item);
+    cardsList.append(cardElement);
+  });
 })
 .catch(console.error);
 
@@ -63,6 +64,7 @@ const editProfileDescriptionInput = editProfileModal.querySelector(
 );
 const avatarModal = document.querySelector("#avatar-modal");
 const avatarForm = avatarModal.querySelector(".modal__form");
+const profileAvatar = document.querySelector(".profile__avatar");
 const avatarSubmitBtn = avatarModal.querySelector(".modal__submit-btn");
 const avatarModalCloseBtn = avatarModal.querySelector(".modal__close-btn");
 const avatarInput = avatarModal.querySelector("#profile-avatar-input");
@@ -256,7 +258,7 @@ function handleAvatarFormSubmit(evt) {
     avatar: avatarInput.value
   })
   .then((userData) => {
-    document.querySelector('.profile__avatar').src = userData.avatar;
+    profileAvatar.src = userData.avatar;
     closeModal(avatarModal);
   })
   .catch(console.error)
