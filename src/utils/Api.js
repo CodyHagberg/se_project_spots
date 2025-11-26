@@ -1,3 +1,5 @@
+// Api.js - A class to handle API requests for user info and cards
+
 class Api {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
